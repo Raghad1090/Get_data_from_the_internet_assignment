@@ -5,8 +5,8 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.get_data_from_the_internet_assignment.network.CountriesFlagsPhoto
 import com.example.get_data_from_the_internet_assignment.network.Photo
+import java.util.*
 
 
 @BindingAdapter("imageUrl")
@@ -33,9 +33,4 @@ fun RecyclerView.setData(list : List<Photo>?) {
 
     val adapter = this.adapter as PhotoGridAdapter
     adapter.submitList(list)
-
 }
-
-
-
-

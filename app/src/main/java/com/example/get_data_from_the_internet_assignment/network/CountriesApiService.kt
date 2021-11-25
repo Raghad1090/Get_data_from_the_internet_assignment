@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 
 private const val BASE_URL =
-    " https://countriesnow.space/api/v0.1/countries/flag/images"
+    " https://countriesnow.space"
 
 
 private val moshi = Moshi.Builder()

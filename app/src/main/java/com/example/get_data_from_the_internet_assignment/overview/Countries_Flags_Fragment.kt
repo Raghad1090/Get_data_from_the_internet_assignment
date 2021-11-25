@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.get_data_from_the_internet_assignment.databinding.FragmentCountriesFlagsBinding
 import com.example.get_data_from_the_internet_assignment.databinding.GridViewItemBinding
-import com.example.get_data_from_the_internet_assignment.overview.CountriesFlagsViewmodel
+
 
 
 class Countries_Flags_Fragment : Fragment() {
@@ -21,9 +21,9 @@ class Countries_Flags_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //val binding = FragmentCountriesFlagsBinding.inflate(inflater)
+        val binding = FragmentCountriesFlagsBinding.inflate(inflater)
 
-        val binding = GridViewItemBinding.inflate(inflater)
+//        val binding = GridViewItemBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
 
@@ -33,6 +33,5 @@ class Countries_Flags_Fragment : Fragment() {
 
         // Inflate the layout for this fragment
         return binding.root
-
     }
 }

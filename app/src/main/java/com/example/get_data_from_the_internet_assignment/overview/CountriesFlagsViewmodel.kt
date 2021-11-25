@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.get_data_from_the_internet_assignment.network.CountriesApi
 import com.example.get_data_from_the_internet_assignment.network.Photo
-
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import java.util.*
+
 
 class CountriesFlagsViewmodel : ViewModel() {
 
