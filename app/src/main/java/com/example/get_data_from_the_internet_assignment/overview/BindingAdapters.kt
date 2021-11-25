@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.get_data_from_the_internet_assignment.network.CountriesFlagsPhoto
+import com.example.get_data_from_the_internet_assignment.network.Photo
 
 
 @BindingAdapter("imageUrl")
@@ -16,18 +17,25 @@ fun bindImage (imageView: ImageView, imgUrl: String?){
       val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
 
       imageView.load(imgUri) {
+
       }
+
     }
 }
 
 
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView,
-                     data: List<CountriesFlagsPhoto>?) {
+fun RecyclerView.setData(list : List<Photo>?) {
 
-    val adapter = recyclerView.adapter as PhotoGridAdapter
-    adapter.submitList(data)
+    if(this.adapter==null){
+        this.adapter = PhotoGridAdapter()
+    }
+
+    val adapter = this.adapter as PhotoGridAdapter
+    adapter.submitList(list)
 
 }
+
+
 
 

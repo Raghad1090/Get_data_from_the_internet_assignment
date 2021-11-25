@@ -5,16 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.get_data_from_the_internet_assignment.network.CountriesApi
-import com.example.get_data_from_the_internet_assignment.network.photos
+import com.example.get_data_from_the_internet_assignment.network.Photo
+
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class CountriesFlagsViewmodel : ViewModel() {
 
 
-    private val _photos = MutableLiveData<List<photos>>()
+    private val _photos = MutableLiveData<List<Photo>>()
 
-    val photos: LiveData<List<photos>> = _photos
+    val photos: LiveData<List<Photo>> = _photos
 
 
     private val _status = MutableLiveData<String>()

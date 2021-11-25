@@ -3,51 +3,43 @@ package com.example.get_data_from_the_internet_assignment.overview
 import android.provider.Contacts
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
+
+import androidx.recyclerview.widget.ListAdapter
+
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.get_data_from_the_internet_assignment.databinding.GridViewItemBinding
-import com.example.get_data_from_the_internet_assignment.network.CountriesFlagsPhoto
-import com.example.get_data_from_the_internet_assignment.network.photos
+import com.example.get_data_from_the_internet_assignment.network.Photo
 
-class PhotoGridAdapter : ListAdapter< CountriesFlagsPhoto , PhotoGridAdapter.CountriesFlagsPhotoViewHolder>(DiffCallback) {
+
+class PhotoGridAdapter : ListAdapter<Photo, PhotoGridAdapter.CountriesFlagsPhotoViewHolder>(DiffCallback) {
 
 
     class CountriesFlagsPhotoViewHolder (private var binding:
-                              GridViewItemBinding
+    GridViewItemBinding
     ):
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(CountryFlagsPhoto: CountriesFlagsPhoto) {
-            binding.photo = CountryFlagsPhoto
+        fun bind(photo: Photo) {
+            binding.photo = photo
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<CountriesFlagsPhoto>() {
-        override fun areItemsTheSame(
-            oldItem: CountriesFlagsPhoto,
-            newItem: CountriesFlagsPhoto
-        ): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<Photo>() {
+        override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
 
             return oldItem.name == newItem.name
 
-
         }
 
-
-        override fun areContentsTheSame(
-            oldItem: CountriesFlagsPhoto,
-            newItem: CountriesFlagsPhoto
-        ): Boolean {
-
+        override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
             return oldItem.flagUrl == newItem.flagUrl
-
-
         }
+    }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridAdapter.CountriesFlagsPhotoViewHolder {
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoGridAdapter.CountriesFlagsPhotoViewHolder {
 
         return CountriesFlagsPhotoViewHolder(GridViewItemBinding.inflate(
             LayoutInflater.from(parent.context)))
@@ -60,6 +52,7 @@ class PhotoGridAdapter : ListAdapter< CountriesFlagsPhoto , PhotoGridAdapter.Cou
     }
 
 
-    }
 
 }
+
+

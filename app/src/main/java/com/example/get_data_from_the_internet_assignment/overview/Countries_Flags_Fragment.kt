@@ -25,11 +25,11 @@ class Countries_Flags_Fragment : Fragment() {
 
         val binding = GridViewItemBinding.inflate(inflater)
 
-        binding.photosGrid.adapter = PhotoGridAdapter()
-
         binding.lifecycleOwner = this
 
-        binding.photo = viewModel
+        binding.viewModel = viewModel
+
+        binding.photosGrid.adapter = PhotoGridAdapter()
 
         // Inflate the layout for this fragment
         return binding.root
