@@ -24,6 +24,8 @@ class PhotoGridAdapter : ListAdapter<Photo, PhotoGridAdapter.CountriesFlagsPhoto
         }
     }
 
+
+
     companion object DiffCallback : DiffUtil.ItemCallback<Photo>() {
         override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
 

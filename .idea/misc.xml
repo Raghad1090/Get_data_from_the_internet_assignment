@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_broken_image.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_connection.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/loading_animation.xml" value="0.1712962962962963" />
+        <entry key="app/src/main/res/drawable/loading_img.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/fragment_countries_flags.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_number_of_countries_.xml" value="0.23125" />

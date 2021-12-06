@@ -13,15 +13,20 @@ import java.util.*
 
 class CountriesFlagsViewmodel : ViewModel() {
 
+    enum class ApiStatus {LOADING , ERROR , DONE }
 
     private val _photos = MutableLiveData<List<Photo>>()
 
     val photos: LiveData<List<Photo>> = _photos
 
 
-    private val _status = MutableLiveData<String>()
+    private val _name = MutableLiveData<List<Photo>>()
+    val name: LiveData<List<Photo>> = _name
 
-    val status: LiveData<String> = _status
+
+    private val _status = MutableLiveData<ApiStatus>()
+
+    val status: LiveData<ApiStatus> = _status
 
     init {
         getCountriesPhotos()
@@ -31,11 +36,14 @@ class CountriesFlagsViewmodel : ViewModel() {
     private fun getCountriesPhotos() {
 
         viewModelScope.launch {
+            _status.value = ApiStatus.LOADING
             try {
-                val listResult = CountriesApi.retrofitService.getPhotos()
-                _status.value = "Success: countries photos retrieved"
+//                val listResult = CountriesApi.retrofitService.getPhotos()
+                _photos.value = CountriesApi.retrofitService.getPhotos().data
+                _status.value = ApiStatus.DONE
             } catch (e: Exception){
-                _status.value = "Failure: ${e.message}"
+                _status.value = ApiStatus.ERROR
+                _photos.value = listOf()
             }
 
         }
