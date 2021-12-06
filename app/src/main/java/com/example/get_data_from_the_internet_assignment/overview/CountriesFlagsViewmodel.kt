@@ -10,10 +10,10 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
 
+enum class ApiStatus {LOADING , ERROR , DONE }
 
 class CountriesFlagsViewmodel : ViewModel() {
 
-    enum class ApiStatus {LOADING , ERROR , DONE }
 
     private val _photos = MutableLiveData<List<Photo>>()
 

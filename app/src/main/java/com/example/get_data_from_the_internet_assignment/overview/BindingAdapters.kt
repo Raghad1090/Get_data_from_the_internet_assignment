@@ -6,20 +6,37 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
+import coil.decode.SvgDecoder
 import coil.load
 import com.example.get_data_from_the_internet_assignment.R
 import com.example.get_data_from_the_internet_assignment.network.Photo
 import java.util.*
 
 
+//@BindingAdapter("imageUrl")
+//fun bindImage(imgView: ImageView, imgUrl: String?) {
+//    imgUrl?.let {
+//        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+//        imgView.load(imgUri) {
+//            placeholder(R.drawable.loading_animation)
+//            error(R.drawable.ic_broken_image)
+//        }
+//    }
+//}
+
+
 @BindingAdapter("imageUrl")
-fun bindImage(imgView: ImageView, imgUrl: String?) {
-    imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        imgView.load(imgUri) {
+fun ImageView.bindImage(imageUri: String?) {
+
+    imageUri?.let{
+        val imageLoader = ImageLoader.Builder(context)
+            .componentRegistry { add(SvgDecoder(context)) }
+            .build()
+
+        this.load(uri = imageUri, imageLoader = imageLoader) {
+            crossfade(true)
             placeholder(R.drawable.loading_animation)
-            error(R.drawable.ic_broken_image)
-        }
+            error(R.drawable.ic_broken_image) }
     }
 }
 
@@ -36,17 +53,17 @@ fun bindRecyclerView(recyclerView: RecyclerView, list: List<Photo>?) {
 }
 
 @BindingAdapter("ApiStatus")
-fun bindStatus(statusImageView: ImageView, status: CountriesFlagsViewmodel.ApiStatus?) {
+fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
     when (status) {
-        CountriesFlagsViewmodel.ApiStatus.LOADING -> {
+        ApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.loading_animation)
         }
-        CountriesFlagsViewmodel.ApiStatus.ERROR -> {
+        ApiStatus.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        CountriesFlagsViewmodel.ApiStatus.DONE -> {
+        ApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
     }
