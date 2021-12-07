@@ -1,5 +1,6 @@
 package com.example.get_data_from_the_internet_assignment.overview
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,7 @@ class CountriesFlagsViewmodel : ViewModel() {
 
     val status: LiveData<ApiStatus> = _status
 
+
     init {
         getCountriesPhotos()
     }
@@ -41,7 +43,9 @@ class CountriesFlagsViewmodel : ViewModel() {
 //                val listResult = CountriesApi.retrofitService.getPhotos()
                 _photos.value = CountriesApi.retrofitService.getPhotos().data
                 _status.value = ApiStatus.DONE
+                Log.e("TAG", "getCountriesPhotos:  done", )
             } catch (e: Exception){
+                Log.e("TAG", "getCountriesPhotos:  error", )
                 _status.value = ApiStatus.ERROR
                 _photos.value = listOf()
             }

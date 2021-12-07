@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 
 private const val BASE_URL =
-    " https://countriesnow.space"
+    " https://countriesnow.space/"
 
 
 private val moshi = Moshi.Builder()
@@ -18,14 +18,14 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
 
 interface CountriesApiService {
 
-    @GET("/api/v0.1/countries/flag/images")
+    @GET("api/v0.1/countries/flag/images")
 
     suspend fun getPhotos(): CountriesFlagsPhoto
 

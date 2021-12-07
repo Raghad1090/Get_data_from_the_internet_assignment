@@ -1,5 +1,6 @@
 package com.example.get_data_from_the_internet_assignment.overview
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
@@ -23,7 +24,6 @@ import java.util.*
 //        }
 //    }
 //}
-
 
 @BindingAdapter("imageUrl")
 fun ImageView.bindImage(imageUri: String?) {
@@ -54,6 +54,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, list: List<Photo>?) {
 
 @BindingAdapter("ApiStatus")
 fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
+    Log.e("TAG", "bindStatus: $status", )
     when (status) {
         ApiStatus.LOADING -> {
             statusImageView.visibility = View.VISIBLE
